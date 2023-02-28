@@ -1,11 +1,18 @@
 import AppRoutes from "./routes";
-import { ThemeProvider } from "styled-components";
-import createTheme from "./utils/theme";
-import GlobalCSS from "./global.css";
+import { GlobalStyles, ThemeProvider } from "@mui/material";
+import theme from "./utils/theme";
 function App() {
   return (
-    <ThemeProvider theme={createTheme()}>
-      <GlobalCSS />
+    <ThemeProvider theme={theme}>
+      <GlobalStyles
+        styles={{
+          body: {
+            margin: 0,
+            background: "#fafafa",
+            fontFamily: "Exo",
+          },
+        }}
+      />
       <AppRoutes />
     </ThemeProvider>
   );

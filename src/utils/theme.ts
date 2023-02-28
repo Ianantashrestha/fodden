@@ -1,3 +1,4 @@
+import { createTheme } from "@mui/material";
 export const screenSizes = {
   xs: "480px",
   sm: "576px",
@@ -32,22 +33,36 @@ const generalColors = {
   bodyBg: "#fafafa",
   white: "#fff",
   black: "#000",
-  primary: "",
-  secondary: "",
+  primary: "#457B9D",
+  secondary: "#EBF4FA",
+  primaryTextColor: "#0E101A",
+  secondaryTextColor: "#0e101a",
+  danger: "#EB5757",
 };
 const fontColors = {};
 
-const createTheme = () => {
-  const theme = {
-    generalColors,
-    fontColors,
-    sizes,
-    devices,
-  };
+// const theme = {
+//   generalColors,
+//   fontColors,
+//   sizes,
+//   devices,
+// };
 
-  return theme;
-};
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: generalColors["primary"],
+    },
+    secondary: {
+      main: generalColors["secondary"],
+    },
+    error: {
+      main: generalColors["danger"],
+    },
+  },
+  typography: {
+    fontFamily: "Exo",
+  },
+});
 
-export default createTheme;
-
-export const ThemeType = createTheme();
+export default theme;
