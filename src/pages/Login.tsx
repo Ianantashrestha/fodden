@@ -7,8 +7,9 @@ import {
   Row,
   Line,
 } from "../system";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <Column
       sx={{
@@ -22,7 +23,7 @@ const Login = () => {
           padding: "40px 20px",
           border: "1px solid #EBF4FA;",
           borderRadius: 4,
-          width: "25%",
+          width: 350,
         }}
       >
         <TypographyText
@@ -54,7 +55,13 @@ const Login = () => {
           >
             Forget Password ?
           </TypographyText>
-          <ActionButton size="large" sx={{ marginTop: 1 }}>
+          <ActionButton
+            size="large"
+            sx={{ marginTop: 1 }}
+            onClick={() => {
+              navigate("dashboard");
+            }}
+          >
             Sign In
           </ActionButton>
         </Column>

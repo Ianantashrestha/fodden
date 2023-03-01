@@ -63,6 +63,18 @@ const theme = createTheme({
   typography: {
     fontFamily: "Exo",
   },
+  components: {
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          maxWidth: "1500px",
+        },
+        maxWidthLg: {
+          maxWidth: "1500px!important",
+        },
+      },
+    },
+  },
 });
 
 export default theme;

@@ -19,11 +19,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
-    "paths":{
-      "@app/*":["./src/*"],
-      "@ui":["./src/system"],
-      "@components":["./src/components"]
+    "baseUrl": "./",
+    "paths": {
+        "@src/*": ["./src/*"]
     }
   },
   "include": [
