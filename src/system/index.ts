@@ -8,7 +8,9 @@ import ActionButton from "./Button";
 import Line from "./Line";
 import Image from "./Image";
 import NavLink from "./NavLink";
-
+import GridBox from "./GridBox";
+import ToolTipBox from "./ToolTipBox";
+import ModalBox from "./ModalBox";
 export {
   Row,
   CardBox,
@@ -20,4 +22,7 @@ export {
   ContainerBox,
   Image,
   NavLink,
+  GridBox,
+  ToolTipBox,
+  ModalBox,
 };

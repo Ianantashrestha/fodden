@@ -39,13 +39,15 @@ const Login = () => {
         <Column sx={{ rowGap: 2.5 }}>
           <FormField
             label="Email"
-            type="text"
+            type="email"
+            formType="text"
             placeholder="Enter your email address"
             name="email"
           />
           <FormField
             label="Password"
-            type="text"
+            type="password"
+            formType="text"
             placeholder="Enter your password"
             name="password"
           />

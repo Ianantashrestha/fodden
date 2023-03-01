@@ -3,6 +3,7 @@ import PublicLayout from "../components/layouts/PublicLayout";
 import PrivateLayout from "../components/layouts/PrivateLayouts";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
+import CreateUpdateIntegration from "../pages/Integration/Form";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -12,6 +13,10 @@ const AppRoutes = () => {
         </Route>
         <Route path="/dashboard" element={<PrivateLayout />}>
           <Route index element={<Dashboard />} />
+          <Route
+            path="create/integration"
+            element={<CreateUpdateIntegration />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
