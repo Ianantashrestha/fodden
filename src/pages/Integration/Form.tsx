@@ -36,8 +36,8 @@ const CreateUpdateIntegration = () => {
       navigate("/reward/integration");
     }
     if (data?.integrationType === "eco") {
+      navigate("/eco/integration");
     }
-    navigate("/eco/integration");
   };
   return (
     <ContainerBox>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   CardBox,
   ContainerBox,
@@ -6,6 +5,7 @@ import {
   Column,
   TypographyText,
   Image,
+  ActionButton,
 } from "../../system";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 const DashboardHeader = () => {
@@ -17,6 +17,7 @@ const DashboardHeader = () => {
             justifyContent: "space-between",
             alignItems: "center",
             height: "100%",
+            position: "relative",
           }}
         >
           <Column
@@ -50,6 +51,21 @@ const DashboardHeader = () => {
               <KeyboardArrowDownIcon />
             </Row>
           </Column>
+          {/* <Column
+            sx={{
+              background: "white",
+              position: "absolute",
+              left: 0,
+              bottom: 0,
+            }}
+          >
+            <ActionButton sx={{ background: "#fff", color: "black" }}>
+              Account Setting
+            </ActionButton>
+            <ActionButton sx={{ background: "#fff", color: "black" }}>
+              Sign Out
+            </ActionButton>
+          </Column> */}
         </Row>
       </ContainerBox>
     </CardBox>
