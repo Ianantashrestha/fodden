@@ -3,6 +3,7 @@ import { styled, Card } from "@mui/material";
 interface CardBoxProps {
   children?: ReactNode;
   sx?: any;
+  onClick?: () => void;
 }
 const StyledCard = styled(Card)`
   border-radius: 8px;

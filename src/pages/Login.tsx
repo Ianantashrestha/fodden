@@ -10,6 +10,9 @@ import {
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate("dashboard");
+  };
   return (
     <Column
       sx={{
@@ -36,37 +39,35 @@ const Login = () => {
         >
           SignIn
         </TypographyText>
-        <Column sx={{ rowGap: 2.5 }}>
-          <FormField
-            label="Email"
-            type="email"
-            formType="text"
-            placeholder="Enter your email address"
-            name="email"
-          />
-          <FormField
-            label="Password"
-            type="password"
-            formType="text"
-            placeholder="Enter your password"
-            name="password"
-          />
-          <TypographyText
-            color="primary"
-            sx={{ fontSize: 16, fontWeight: 500 }}
-          >
-            Forget Password ?
-          </TypographyText>
-          <ActionButton
-            size="large"
-            sx={{ marginTop: 1 }}
-            onClick={() => {
-              navigate("dashboard");
-            }}
-          >
-            Sign In
-          </ActionButton>
-        </Column>
+        <form onSubmit={handleSubmit}>
+          <Column sx={{ rowGap: 2.5 }}>
+            <FormField
+              required
+              label="Email"
+              type="email"
+              formType="text"
+              placeholder="Enter your email address"
+              name="email"
+            />
+            <FormField
+              required
+              label="Password"
+              type="password"
+              formType="text"
+              placeholder="Enter your password"
+              name="password"
+            />
+            <TypographyText
+              color="primary"
+              sx={{ fontSize: 16, fontWeight: 500 }}
+            >
+              Forget Password ?
+            </TypographyText>
+            <ActionButton type="submit" size="large" sx={{ marginTop: 1 }}>
+              Sign In
+            </ActionButton>
+          </Column>
+        </form>
         <Column sx={{ position: "relative", marginTop: 5 }}>
           <Line />
           <Column

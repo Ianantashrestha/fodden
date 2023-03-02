@@ -16,6 +16,7 @@ interface ActionButtonProps {
     | "warning";
   sx?: any;
   onClick?: () => void;
+  type?: "submit" | "button";
 }
 const StyledButton = styled(Button)(
   ({ theme }) => `
@@ -28,11 +29,18 @@ const ActionButton: FC<ActionButtonProps> = ({
   title,
   variant = "contained",
   size = "medium",
+  type = "button",
   color = "primary",
   ...restProps
 }) => {
   return (
-    <StyledButton size={size} variant={variant} color={color} {...restProps}>
+    <StyledButton
+      type={type}
+      size={size}
+      variant={variant}
+      color={color}
+      {...restProps}
+    >
       {title || children}
     </StyledButton>
   );

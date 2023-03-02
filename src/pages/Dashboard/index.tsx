@@ -55,6 +55,7 @@ const Dashboard = () => {
         component={
           <Row sx={{ columnGap: 6 }}>
             <FormField
+              sx={{ width: 400 }}
               formType="search"
               placeholder="Search Integrations"
               onChange={(e) => {
@@ -77,7 +78,12 @@ const Dashboard = () => {
         <GridBox container spacing={4} sx={{ marginTop: 1 }}>
           {integrationData?.map((item: any) => (
             <GridBox key={item?.title} item lg={3} md={6} xs={12}>
-              <CardBox sx={{ padding: "15px 20px" }}>
+              <CardBox
+                sx={{ padding: "15px 20px" }}
+                onClick={() => {
+                  navigate("detail/integration");
+                }}
+              >
                 <Row
                   sx={{ justifyContent: "space-between", alignItems: "center" }}
                 >

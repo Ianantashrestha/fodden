@@ -1,4 +1,5 @@
-import { TextField, Stack, FormLabel, styled } from "@mui/material";
+import { Stack, FormLabel } from "@mui/material";
+import { StyledTextField } from "./style";
 import SearchIcon from "@mui/icons-material/Search";
 
 import { memo, FC } from "react";
@@ -8,34 +9,15 @@ interface FormFieldProps {
   placeholder?: string;
   name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick?: (e: React.SyntheticEvent) => void;
   sx?: any;
   formType?: "checkbox" | "text" | "search";
   multiline?: boolean;
   rows?: number;
   maxRows?: number;
+  required?: boolean;
 }
-const StyledTextField = styled(TextField)(
-  ({ theme }) => `
-  .MuiOutlinedInput-root{
-    padding:0px;
-  }
-    input{
-        border: 1px solid #D1DDEA ;
-        outline:none;
-        background:white;
-      ::placeholder{
-        font-size:14px;
-      }
-  }
-  textarea{
-    border: 1px solid #D1DDEA ;
-    outline:none;
-    background:white;
-    font-size:14px;
-    padding:5px 15px;
-  }
-      `
-);
+
 const FormField: FC<FormFieldProps> = ({ formType, label, ...restProps }) => {
   return (
     <Stack>
