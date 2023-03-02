@@ -15,28 +15,32 @@ import { InfoIcon, CurveIcon, CrossIcon, EqulizerIcon } from "../../images";
 import { PageHeader, Empty, DeleteModal } from "../../components";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useNavigate } from "react-router-dom";
+const integrationData: any = [
+  {
+    title: "Integration 1",
+    totalIssue: 4,
+    totalStory: 23,
+    image: CurveIcon,
+  },
+  {
+    title: "Integration 2",
+    totalIssue: 5,
+    totalStory: 28,
+    image: CrossIcon,
+  },
+];
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState<string>("");
+  const [data, setData] = useState(integrationData);
   const [open, setOpen] = useState<boolean>(false);
   const handleSearch = (value: string) => {
-    setSearch(value);
+    const filterData = integrationData?.filter((item: any) =>
+      item?.title.includes(value)
+    );
+    setData(filterData);
+    console.log(filterData);
   };
 
-  const integrationData: any = [
-    {
-      title: "Integration 1",
-      totalIssue: 4,
-      totalStory: 23,
-      image: CurveIcon,
-    },
-    {
-      title: "Integration 2",
-      totalIssue: 5,
-      totalStory: 28,
-      image: CrossIcon,
-    },
-  ];
   return (
     <ContainerBox>
       <DeleteModal
@@ -65,7 +69,7 @@ const Dashboard = () => {
             <ActionButton
               size="large"
               onClick={() => {
-                navigate("create/integration");
+                navigate("/create/integration");
               }}
             >
               Create New Integration
@@ -73,17 +77,11 @@ const Dashboard = () => {
           </Row>
         }
       />
-
-      {!!search ? (
+      {!!data?.length ? (
         <GridBox container spacing={4} sx={{ marginTop: 1 }}>
-          {integrationData?.map((item: any) => (
+          {data?.map((item: any) => (
             <GridBox key={item?.title} item lg={3} md={6} xs={12}>
-              <CardBox
-                sx={{ padding: "15px 20px" }}
-                onClick={() => {
-                  navigate("detail/integration");
-                }}
-              >
+              <CardBox sx={{ padding: "15px 20px" }}>
                 <Row
                   sx={{ justifyContent: "space-between", alignItems: "center" }}
                 >

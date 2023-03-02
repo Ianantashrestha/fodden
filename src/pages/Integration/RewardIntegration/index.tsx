@@ -4,15 +4,16 @@ import {
   FormField,
   Row,
   ActionButton,
-} from "../../system";
-import { PageHeader } from "../../components";
-const IntegrationDetails = () => {
+} from "../../../system";
+import { PageHeader } from "../../../components";
+const RewardIntegration = () => {
   return (
     <ContainerBox>
       <PageHeader
         title="Project BCD"
         description="For every phase, we have come up with different sorts of solutions or preventive measures."
       />
+
       <form>
         <Column
           sx={{
@@ -41,4 +42,4 @@ const IntegrationDetails = () => {
   );
 };
 
-export default IntegrationDetails;
+export default RewardIntegration;
