@@ -5,19 +5,24 @@ import {
   FormField,
   GridBox,
   Line,
-  Row,
+  CardGroupRadioButton,
   Image,
-  TypographyText,
 } from "../../system";
 import { PageHeader } from "../../components";
 import { useNavigate } from "react-router-dom";
-import {
-  StyleCardRadioWrapper,
-  StyleRadioIconWrapper,
-  StyleRadioInput,
-  StyleRadioTarget,
-} from "./style";
 import { RewardIcon, EcoIcon } from "../../images";
+const IntegrationType = [
+  {
+    label: "Reward Integration",
+    value: "reward",
+    component: <Image src={RewardIcon} sx={{ width: 20, height: 20 }} />,
+  },
+  {
+    label: "Ecosystem Integration",
+    value: "eco",
+    component: <Image src={EcoIcon} sx={{ width: 20, height: 20 }} />,
+  },
+];
 const CreateUpdateIntegration = () => {
   const navigate = useNavigate();
   const handleSubmit = (e: React.SyntheticEvent) => {
@@ -68,46 +73,15 @@ const CreateUpdateIntegration = () => {
                 placeholder="Connector Description"
                 rows={6}
               />
-              <Row sx={{ justifyContent: "space-between" }}>
-                <StyleCardRadioWrapper id="reward">
-                  <StyleRadioInput
-                    type="radio"
-                    name="integrationType"
-                    required
-                    id="reward"
-                    value="reward"
-                  />
-                  <StyleRadioTarget className="custom-radio-wrapper">
-                    <StyleRadioIconWrapper>
-                      <Image src={RewardIcon} sx={{ width: 20, height: 20 }} />
-                    </StyleRadioIconWrapper>
-                    <TypographyText
-                      sx={{ fontSize: 16, fontWeight: 500, marginTop: 4 }}
-                    >
-                      Reward Integration
-                    </TypographyText>
-                  </StyleRadioTarget>
-                </StyleCardRadioWrapper>
-                <StyleCardRadioWrapper id="eco">
-                  <StyleRadioInput
-                    type="radio"
-                    name="integrationType"
-                    required
-                    id="eco"
-                    value="eco"
-                  />
-                  <StyleRadioTarget className="custom-radio-wrapper">
-                    <StyleRadioIconWrapper>
-                      <Image src={EcoIcon} sx={{ width: 20, height: 20 }} />
-                    </StyleRadioIconWrapper>
-                    <TypographyText
-                      sx={{ fontSize: 16, fontWeight: 500, marginTop: 4 }}
-                    >
-                      Ecosystem Integration
-                    </TypographyText>
-                  </StyleRadioTarget>
-                </StyleCardRadioWrapper>
-              </Row>
+
+              <CardGroupRadioButton
+                padding="40px 0px"
+                lg={6}
+                md={6}
+                sm={12}
+                data={IntegrationType}
+                name="integrationType"
+              />
             </Column>
             <Line />
             <ActionButton

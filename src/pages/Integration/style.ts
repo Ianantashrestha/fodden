@@ -24,7 +24,7 @@ export const StyleRadioInput = styled("input")`
   border: 0;
   display: none;
   &:checked + .custom-radio-wrapper {
-    border: 1px solid black;
+    border: 1px solid #457b9d;
     border-radius: 4px;
   }
 `;

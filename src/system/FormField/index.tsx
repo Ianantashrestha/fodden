@@ -16,6 +16,7 @@ interface FormFieldProps {
   rows?: number;
   maxRows?: number;
   required?: boolean;
+  value?: string;
 }
 
 const FormField: FC<FormFieldProps> = ({ formType, label, ...restProps }) => {

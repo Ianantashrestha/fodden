@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   CardBox,
   ContainerBox,
@@ -5,12 +6,14 @@ import {
   Column,
   TypographyText,
   Image,
-  ActionButton,
 } from "../../system";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useNavigate } from "react-router-dom";
 const DashboardHeader = () => {
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
   return (
-    <CardBox sx={{ height: 80 }}>
+    <CardBox sx={{ height: 80, overflow: "visible" }}>
       <ContainerBox sx={{ height: "100%" }}>
         <Row
           sx={{
@@ -48,24 +51,60 @@ const DashboardHeader = () => {
               >
                 John Doe
               </TypographyText>
-              <KeyboardArrowDownIcon />
+              <KeyboardArrowDownIcon
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              />
             </Row>
           </Column>
-          {/* <Column
-            sx={{
-              background: "white",
-              position: "absolute",
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <ActionButton sx={{ background: "#fff", color: "black" }}>
-              Account Setting
-            </ActionButton>
-            <ActionButton sx={{ background: "#fff", color: "black" }}>
-              Sign Out
-            </ActionButton>
-          </Column> */}
+          {open && (
+            <Column
+              sx={{
+                background: "white",
+                position: "absolute",
+                top: 80,
+                right: 0,
+                bottom: 0,
+                zIndex: 111,
+                boxShadow: "0px 0px 1px 1px rgba(252,252,252,0.5)",
+              }}
+            >
+              <TypographyText
+                sx={{
+                  background: "#fff",
+                  color: "black",
+                  borderRadius: 0,
+                  boxShadow: 0,
+                  textAlign: "left",
+                  cursor: "pointer",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  padding: "8px 20px",
+                }}
+              >
+                Account Setting
+              </TypographyText>
+              <TypographyText
+                onClick={() => {
+                  navigate("/");
+                }}
+                sx={{
+                  background: "#fff",
+                  color: "black",
+                  borderRadius: 0,
+                  boxShadow: 0,
+                  textAlign: "left",
+                  cursor: "pointer",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  padding: "8px 20px",
+                }}
+              >
+                Sign Out
+              </TypographyText>
+            </Column>
+          )}
         </Row>
       </ContainerBox>
     </CardBox>

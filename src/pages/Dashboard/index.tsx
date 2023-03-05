@@ -11,7 +11,7 @@ import {
   Image,
   Column,
 } from "../../system";
-import { InfoIcon, CurveIcon, CrossIcon, EqulizerIcon } from "../../images";
+import { InfoIcon, CurveIcon, CrossIcon, EqualizerIcon } from "../../images";
 import { PageHeader, Empty, DeleteModal } from "../../components";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useNavigate } from "react-router-dom";
@@ -124,7 +124,7 @@ const Dashboard = () => {
                   <Row sx={{ alignItems: "center", columnGap: 1 }}>
                     <ToolTipBox title="Total Issue">
                       <Image
-                        src={EqulizerIcon}
+                        src={EqualizerIcon}
                         sx={{ width: 15, height: 10 }}
                       />
                     </ToolTipBox>

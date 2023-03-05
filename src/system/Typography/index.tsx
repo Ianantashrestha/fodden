@@ -20,6 +20,7 @@ interface TypographyProps {
   component?: any;
   sx?: any;
   color?: string;
+  onClick?: () => void;
 }
 const TypographyText: FC<TypographyProps> = ({
   children,

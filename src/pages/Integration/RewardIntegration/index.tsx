@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   ContainerBox,
   Column,
@@ -6,7 +7,11 @@ import {
   ActionButton,
 } from "../../../system";
 import { PageHeader } from "../../../components";
+import { Helper } from "../../../utils";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 const RewardIntegration = () => {
+  const [key, setKey] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <ContainerBox>
       <PageHeader
@@ -14,30 +19,49 @@ const RewardIntegration = () => {
         description="For every phase, we have come up with different sorts of solutions or preventive measures."
       />
 
-      <form>
-        <Column
+      <Column
+        sx={{
+          alignItems: "center",
+          justifyContent: "center",
+          height: "50vh",
+        }}
+      >
+        <Row
           sx={{
-            alignItems: "center",
-            justifyContent: "center",
-            height: "50vh",
+            marginBottom: 4,
+            position: "relative",
           }}
         >
-          <Row
-            sx={{
-              marginBottom: 4,
+          <FormField
+            required
+            value={key}
+            type={showPassword ? "text" : "password"}
+            formType="text"
+            label="Generate API Keys"
+            sx={{ width: 400 }}
+          />
+          <RemoveRedEyeIcon
+            onClick={() => {
+              setShowPassword(!showPassword);
             }}
-          >
-            <FormField
-              required
-              type="password"
-              formType="text"
-              label="Generate API Keys"
-              sx={{ width: 400 }}
-            />
-          </Row>
-          <ActionButton type="submit">Generate</ActionButton>
-        </Column>
-      </form>
+            sx={{
+              color: "#AFC1D5",
+              fontSize: 18,
+              position: "absolute",
+              right: 10,
+              top: 35,
+            }}
+          />
+        </Row>
+        <ActionButton
+          type="submit"
+          onClick={() => {
+            setKey(Helper.uid());
+          }}
+        >
+          Generate
+        </ActionButton>
+      </Column>
     </ContainerBox>
   );
 };
