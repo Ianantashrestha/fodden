@@ -12,6 +12,8 @@ import CSVIcon from "./csv.png";
 import IataIcon from "./iata.png";
 import UpIcon from "./up.png";
 import FireIcon from "./fire.png";
+import XoIcon from "./xo.png";
+import AwareIcon from "./aware.png";
 export {
   EmptyIcon,
   CurveIcon,
@@ -27,4 +29,6 @@ export {
   IataIcon,
   UpIcon,
   FireIcon,
+  XoIcon,
+  AwareIcon,
 };

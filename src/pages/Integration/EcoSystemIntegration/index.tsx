@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Column,
   ActionButton,
@@ -12,39 +12,10 @@ import {
   CardGroupRadioButton,
 } from "../../../system";
 import { PageHeader } from "../../../components";
+import { Constants } from "../../../utils";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-
-import {
-  PlayIcon,
-  ArrowIcon,
-  LogicIcon,
-  CSVIcon,
-  IataIcon,
-  UpIcon,
-  FireIcon,
-} from "../../../images";
-const ecoData = [
-  {
-    label: "CSV Source",
-    value: "csv",
-    component: <Image src={CSVIcon} sx={{ width: 20, height: 20 }} />,
-  },
-  {
-    label: "Iata Source",
-    value: "iata",
-    component: <Image src={IataIcon} sx={{ width: 20, height: 20 }} />,
-  },
-  {
-    label: "Up Source",
-    value: "up",
-    component: <Image src={UpIcon} sx={{ width: 20, height: 20 }} />,
-  },
-  {
-    label: "Fire Source",
-    value: "fire",
-    component: <Image src={FireIcon} sx={{ width: 20, height: 20 }} />,
-  },
-];
+import { PlayIcon, ArrowIcon, LogicIcon } from "../../../images";
+const ecoData = Constants.dataFormats();
 const EcoSystemIntegration = () => {
   const [openSourceModal, setOpenSourceModal] = useState<boolean>(false);
   const [openDestinationModal, setOpenDestinationModal] =
@@ -63,10 +34,10 @@ const EcoSystemIntegration = () => {
     setOpenSourceModal(false);
   };
   const handleDestination = () => {
-    setDestination("");
     setOpenDestinationModal(true);
   };
   const handleCloseDestination = () => {
+    setDestination("");
     setOpenDestinationModal(false);
   };
 
@@ -74,8 +45,10 @@ const EcoSystemIntegration = () => {
     setSource(e.target.value);
   };
   const handleDestinationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
     setDestination(e.target.value);
   };
+
   return (
     <ContainerBox>
       <PageHeader
@@ -168,7 +141,10 @@ const EcoSystemIntegration = () => {
                       borderRadius: 1,
                     }}
                   >
-                    {selectedSource?.component}
+                    <Image
+                      src={selectedSource?.icon}
+                      sx={{ width: 20, height: 20 }}
+                    />
                   </Column>
                   <TypographyText sx={{ fontSize: 16, fontWeight: 500 }}>
                     {selectedSource?.label}
@@ -187,7 +163,7 @@ const EcoSystemIntegration = () => {
           <CardGroupRadioButton
             padding="10px 0px"
             showTitle={false}
-            lg={2}
+            lg={3}
             md={4}
             sm={6}
             name="source"
@@ -252,7 +228,10 @@ const EcoSystemIntegration = () => {
                       borderRadius: 1,
                     }}
                   >
-                    {selectedDestination?.component}
+                    <Image
+                      src={selectedDestination?.icon}
+                      sx={{ width: 20, height: 20 }}
+                    />
                   </Column>
                   <TypographyText sx={{ fontSize: 16, fontWeight: 500 }}>
                     {selectedDestination?.label}
@@ -270,7 +249,7 @@ const EcoSystemIntegration = () => {
           <CardGroupRadioButton
             padding="10px 0px"
             showTitle={false}
-            lg={2}
+            lg={3}
             md={4}
             sm={6}
             name="source"
@@ -289,7 +268,7 @@ const EcoSystemIntegration = () => {
               fontWeight: 550,
               marginLeft: "auto",
             }}
-            onClick={handleCloseSource}
+            onClick={handleCloseDestination}
           >
             Cancel
           </NavLink>

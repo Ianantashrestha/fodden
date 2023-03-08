@@ -11,12 +11,13 @@ interface FormFieldProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: (e: React.SyntheticEvent) => void;
   sx?: any;
-  formType?: "checkbox" | "text" | "search";
+  formType?: "checkbox" | "text" | "search" | "file";
   multiline?: boolean;
   rows?: number;
   maxRows?: number;
   required?: boolean;
   value?: string;
+  accept?: string;
 }
 
 const FormField: FC<FormFieldProps> = ({ formType, label, ...restProps }) => {
@@ -50,6 +51,7 @@ const FormField: FC<FormFieldProps> = ({ formType, label, ...restProps }) => {
           />
         </Stack>
       )}
+      {formType === "file" && <StyledTextField {...restProps} type="file" />}
     </Stack>
   );
 };

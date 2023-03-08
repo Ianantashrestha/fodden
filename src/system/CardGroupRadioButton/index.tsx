@@ -1,5 +1,5 @@
-import { FC, ReactElement } from "react";
-import { GridBox, TypographyText } from "..";
+import { FC } from "react";
+import { GridBox, TypographyText, Image } from "..";
 import {
   CardRadioButton,
   StyleRadioInput,
@@ -9,7 +9,7 @@ import {
 interface GroupDataProps {
   label: string;
   value: string;
-  component?: ReactElement;
+  icon?: any;
 }
 interface CardGroupRadioButtonProps {
   sx?: any;
@@ -57,9 +57,9 @@ const CardGroupRadioButton: FC<CardGroupRadioButtonProps> = ({
               padding={padding}
               focus={focus}
             >
-              {radio?.component && (
+              {radio?.icon && (
                 <StyleRadioIconWrapper>
-                  {radio?.component}
+                  <Image src={radio?.icon} sx={{ width: 25, height: 25 }} />
                 </StyleRadioIconWrapper>
               )}
               {showTitle && (

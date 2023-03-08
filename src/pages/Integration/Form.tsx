@@ -6,21 +6,21 @@ import {
   GridBox,
   Line,
   CardGroupRadioButton,
-  Image,
 } from "../../system";
 import { PageHeader } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { RewardIcon, EcoIcon } from "../../images";
+import CSV from "./CSV";
 const IntegrationType = [
   {
     label: "Reward Integration",
     value: "reward",
-    component: <Image src={RewardIcon} sx={{ width: 20, height: 20 }} />,
+    icon: RewardIcon,
   },
   {
     label: "Ecosystem Integration",
     value: "eco",
-    component: <Image src={EcoIcon} sx={{ width: 20, height: 20 }} />,
+    icon: EcoIcon,
   },
 ];
 const CreateUpdateIntegration = () => {
@@ -92,6 +92,9 @@ const CreateUpdateIntegration = () => {
               Create Integration
             </ActionButton>
           </form>
+        </GridBox>
+        <GridBox item lg={7}>
+          <CSV />
         </GridBox>
       </GridBox>
     </ContainerBox>
