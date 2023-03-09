@@ -10,7 +10,7 @@ import {
 import { PageHeader } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { RewardIcon, EcoIcon } from "../../images";
-import CSV from "./CSV";
+
 const IntegrationType = [
   {
     label: "Reward Integration",
@@ -92,9 +92,6 @@ const CreateUpdateIntegration = () => {
               Create Integration
             </ActionButton>
           </form>
-        </GridBox>
-        <GridBox item lg={7}>
-          <CSV />
         </GridBox>
       </GridBox>
     </ContainerBox>

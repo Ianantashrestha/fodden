@@ -52,7 +52,7 @@ const ModalBox: FC<ModalBoxProps> = ({
             />
           </Row>
         )}
-        <Column sx={{ padding: "0px 25px" }}>{children}</Column>
+        <Column sx={{ padding: "0px 25px", height: "100%" }}>{children}</Column>
       </CardBox>
     </Modal>
   );

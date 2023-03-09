@@ -5,6 +5,7 @@ interface ImageProps {
   sx?: any;
   variant?: "circular" | "rounded" | "square";
   objectFit?: any;
+  onClick?: () => void;
 }
 
 const StyledAvatar = styled(Avatar)(

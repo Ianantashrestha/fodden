@@ -15,13 +15,37 @@ import { PageHeader } from "../../../components";
 import { Constants } from "../../../utils";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { PlayIcon, ArrowIcon, LogicIcon } from "../../../images";
+import CSVReader from "react-csv-reader";
+import ReactFlow, { Controls, Background } from "reactflow";
+import "reactflow/dist/style.css";
+
 const ecoData = Constants.dataFormats();
 const EcoSystemIntegration = () => {
   const [openSourceModal, setOpenSourceModal] = useState<boolean>(false);
+  const [openNode, setOpenNode] = useState<boolean>(false);
   const [openDestinationModal, setOpenDestinationModal] =
     useState<boolean>(false);
   const [source, setSource] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
+  const [nodes, setNodes] = useState([]);
+  const handleCSVUpload = (data: any) => {
+    const columnDatas: any = data[0];
+    let finalData: any = [];
+    let position = 0;
+    columnDatas?.map((item: any, index: number) => {
+      let obj: any = {
+        id: (index + 1).toString(),
+        data: { label: item },
+        position: { x: position, y: position },
+      };
+      if (index === 0) {
+        obj = { ...obj, type: "input" };
+      }
+      finalData.push(obj);
+      position = position + 50;
+    });
+    setNodes(finalData);
+  };
   const selectedSource = ecoData?.find((item) => item?.value === source);
   const selectedDestination = ecoData?.find(
     (item) => item?.value === destination
@@ -48,6 +72,7 @@ const EcoSystemIntegration = () => {
     console.log(e.target.value);
     setDestination(e.target.value);
   };
+  console.log(nodes);
 
   return (
     <ContainerBox>
@@ -106,10 +131,41 @@ const EcoSystemIntegration = () => {
             </ActionButton>
           </Row>
           <Column sx={{ alignItems: "center", marginTop: 15 }}>
-            <Image src={PlayIcon} />
+            <Image
+              src={PlayIcon}
+              onClick={() => {
+                setOpenNode(true);
+              }}
+            />
           </Column>
         </Column>
       </Column>
+      <Column sx={{ height: "100%" }}>
+        {!!nodes?.length && (
+          <ReactFlow nodes={nodes}>
+            <Background />
+            <Controls />
+          </ReactFlow>
+        )}
+      </Column>
+      <ModalBox
+        boxSx={{ width: "80%", height: "80vh" }}
+        open={openNode}
+        header
+        title="Csv Source"
+        handleClose={() => {
+          setOpenNode(false);
+        }}
+      >
+        <Column sx={{ height: "100%" }}>
+          {!!nodes?.length && (
+            <ReactFlow nodes={nodes}>
+              <Background />
+              <Controls />
+            </ReactFlow>
+          )}
+        </Column>
+      </ModalBox>
       <ModalBox
         boxSx={{ width: 500 }}
         open={openSourceModal}
@@ -126,6 +182,7 @@ const EcoSystemIntegration = () => {
                 border: "1px solid #D1DDEA",
               }}
             >
+              {source === "csv" && <CSVReader onFileLoaded={handleCSVUpload} />}
               <Row
                 sx={{
                   justifyContent: "space-between",
